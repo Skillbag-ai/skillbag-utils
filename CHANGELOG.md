@@ -14,6 +14,9 @@ The format is intentionally simple while the project remains a draft.
   license, code of conduct, security guidance, and changelog.
 - Added `skillbag-long-task` for chunking clearly long-running tasks into
   continuation-sized responses.
+- Added `refresh-skill-context` for low-cost re-ingest of changed SkillBag
+  state, with lazy `SKILL.md` re-reading for only already loaded or newly
+  selected skills.
 - Added `skillbag-supervisor` as a `#run/always #run/last` execution-audit
   skill that can replace a simple skills-used footer with a per-skill status
   report.
