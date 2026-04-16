@@ -15,20 +15,106 @@ standard definition.
 
 ## Available Skills
 
-- [skillbag-create-skill](./.skills/skillbag-create-skill/SKILL.md): Create a new skill in a SkillBag repo and keep `SKILLS.md` synchronized.
-- [skillbag-log-skills](./.skills/skillbag-log-skills/SKILL.md): Make the agent always output the list of skill names used to generate the response. `#run/always`
-- [skillbag-long-task](./.skills/skillbag-long-task/SKILL.md): Split clearly long-running or context-heavy tasks into response-sized chunks and ask the user to continue.
-- [skillbag-modify-skill](./.skills/skillbag-modify-skill/SKILL.md): Modify an existing skill in a SkillBag repo while preserving compliance and catalog sync.
-- [refresh-skill-context](./.skills/refresh-skill-context/SKILL.md): Re-ingest SkillBag state after `SKILLBAG.md`, `SKILLS.md`, or loaded local skills change, while keeping `SKILL.md` reads lazy. `#run/always`
-- [skillbag-supervisor](./.skills/skillbag-supervisor/SKILL.md): Audit used skills at the end of the task, fix issues when possible, and publish an execution report. `#run/always` `#run/last`
+### [skillbag-create-skill](./.skills/skillbag-create-skill/SKILL.md)
 
-Example: a transcription skill can include `#use/skillbag-long-task` so very
-large jobs such as hundreds of audio files are processed in continuation-sized
-chunks instead of one oversized response.
+Creates a new local skill directory, writes a conforming `SKILL.md`, and keeps
+the local `SKILLS.md` catalog synchronized.
 
-Example: a workspace can install `skillbag-supervisor` to replace a simple
-skills-used footer with a final execution audit that marks each used skill as
-correct, fixed, or unknown.
+Key parameters:
+
+- `name` and `description` are required
+- `target-root` selects the SkillBag workspace to modify
+- `version` defaults to `1.0.0`
+- `instructions` lets you seed the skill body
+
+Use this when a workspace needs a new skill scaffold with the correct name
+format, frontmatter, and catalog update in one step.
+
+### [skillbag-log-skills](./.skills/skillbag-log-skills/SKILL.md)
+
+Adds a simple skills-used footer to the final response. This is the lightweight
+reporting option when you only want a flat list of which skills were involved.
+
+Behavior:
+
+- tagged `#run/always`
+- de-duplicates skill names
+- uses canonical hyphenated names
+- can be disabled through user context
+
+Use this when you want minimal visibility into which skills ran, without the
+heavier correctness audit performed by `skillbag-supervisor`.
+
+### [skillbag-long-task](./.skills/skillbag-long-task/SKILL.md)
+
+Breaks clearly oversized work into continuation-sized chunks so the agent can
+make steady progress without overrunning response limits.
+
+Key parameters:
+
+- `continuation-messages` defaults to `next`, `continue`, `>`, and `.`
+- `chunk-boundary-hint` can bias chunking toward files, pages, rows, or any
+  other natural unit
+
+Use this for batch-style work such as transcribing hundreds of audio files,
+processing very large document sets, or any task where one reply is not enough.
+A skill that benefits from this can advertise that relationship with a
+`#use/skillbag-long-task` tag.
+
+### [skillbag-modify-skill](./.skills/skillbag-modify-skill/SKILL.md)
+
+Edits an existing skill while preserving format compliance and catalog
+consistency. It handles both small textual updates and structured changes such
+as renaming or version bumps.
+
+Key parameters:
+
+- `name` is required
+- `new-name` and `new-description` update identity and catalog text
+- `new-version` sets a version directly
+- `version-bump` supports `patch`, `minor`, or `major`
+- `instructions` updates the skill body
+
+Use this when a skill already exists and you want controlled changes without
+manually reconciling `SKILL.md` and `SKILLS.md`.
+
+### [refresh-skill-context](./.skills/refresh-skill-context/SKILL.md)
+
+Refreshes the agent's understanding of the current SkillBag workspace after
+`SKILLBAG.md`, `SKILLS.md`, or installed local skills change, while keeping
+context usage small.
+
+Key parameters:
+
+- `changed-paths` can identify the specific files that changed
+- `loaded-skills` can identify which skills were already loaded in the current
+  working context
+
+This skill always re-checks cheap discovery state first, then only re-reads a
+changed `SKILL.md` when that skill was already loaded or becomes newly selected
+for use. Use it after skill installation, removal, rename, overwrite, or any
+change to `SKILLBAG.md` execution semantics.
+
+### [skillbag-supervisor](./.skills/skillbag-supervisor/SKILL.md)
+
+Performs an end-of-task audit of the skills that were actually used and
+publishes a correctness report instead of a plain skills-used footer.
+
+Key parameters:
+
+- `skills-used` can provide the explicit set of skills to audit
+- `report-format` supports `table` or `bullet-list`
+- `attempt-fixes` defaults to `true`
+
+Behavior:
+
+- tagged `#run/always #run/last`
+- checks whether each used skill was followed closely enough
+- fixes problems in the same turn when possible
+- reports one status per skill: correct, fixed, or unknown
+
+Use this when you want final-response quality control rather than simple skill
+logging.
 
 ## How To Use
 
