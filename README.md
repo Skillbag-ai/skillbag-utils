@@ -19,7 +19,7 @@ standard definition.
 - [skillbag-long-task](./.skills/skillbag-long-task/SKILL.md): Split clearly long-running or context-heavy tasks into response-sized chunks and ask the user to continue.
 - [skillbag-log-skills](./.skills/skillbag-log-skills/SKILL.md): Make the agent always output the list of skill names used to generate the response. `#run/always`
 - [skillbag-modify-skill](./.skills/skillbag-modify-skill/SKILL.md): Modify an existing skill in a SkillBag repo while preserving compliance and catalog sync.
-- [skillbag-supervisor](./.skills/skillbag-supervisor/SKILL.md): Audit used skills at the end of the task, fix issues when possible, and publish an execution report. `#run/last`
+- [skillbag-supervisor](./.skills/skillbag-supervisor/SKILL.md): Audit used skills at the end of the task, fix issues when possible, and publish an execution report. `#run/always` `#run/last`
 
 Example: a transcription skill can include `#use/skillbag-long-task` so very
 large jobs such as hundreds of audio files are processed in continuation-sized

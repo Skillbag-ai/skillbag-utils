@@ -1,6 +1,6 @@
 ---
 name: skillbag-supervisor
-description: Audit used skills at the end of the task, fix issues when possible, and publish an execution report. #run/last
+description: Audit used skills at the end of the task, fix issues when possible, and publish an execution report. #run/always #run/last
 metadata:
   author: backupdev
   version: 1.0.0
