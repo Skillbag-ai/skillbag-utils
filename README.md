@@ -1,4 +1,4 @@
-# SkillBag Utils
+# 🎒 SkillBag Utils
 
 SkillBag Utils is a companion SkillBag repository that provides reusable
 utility skills for maintaining SkillBag workspaces.
