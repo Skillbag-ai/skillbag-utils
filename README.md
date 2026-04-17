@@ -78,7 +78,7 @@ Key parameters:
 Use this when a skill already exists and you want controlled changes without
 manually reconciling `SKILL.md` and `SKILLS.md`.
 
-### [refresh-skill-context](./.skills/refresh-skill-context/SKILL.md)
+### [skillbag-refresh-skill-context](./.skills/skillbag-refresh-skill-context/SKILL.md)
 
 Refreshes the agent's understanding of the current SkillBag workspace after
 `SKILLBAG.md`, `SKILLS.md`, or installed local skills change, while keeping

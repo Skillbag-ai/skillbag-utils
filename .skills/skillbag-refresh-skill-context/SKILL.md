@@ -1,5 +1,5 @@
 ---
-name: refresh-skill-context
+name: skillbag-refresh-skill-context
 description: Re-ingest SkillBag state when SKILLBAG.md or local skill definitions change so the agent uses the latest installed rules and skills. #run/always
 metadata:
   author: backupdev

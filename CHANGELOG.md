@@ -4,6 +4,11 @@ All notable changes to this repository should be documented in this file.
 
 The format is intentionally simple while the project remains a draft.
 
+## Unreleased
+
+- Renamed `refresh-skill-context` to
+  `skillbag-refresh-skill-context`.
+
 ## v0.1.1
 
 - Initial versioned release of `skillbag-utils` as a SkillBag source
