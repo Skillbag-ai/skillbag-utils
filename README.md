@@ -15,6 +15,30 @@ standard definition.
 
 ## Available Skills
 
+### [skillbag-adapt-skill](./.skills/skillbag-adapt-skill/SKILL.md)
+
+Adapts an existing file or directory into a conforming SkillBag skill
+directory while preserving source material and synchronizing the local
+`SKILLS.md` catalog.
+
+Key parameters:
+
+- `source-path` is required
+- `name` and `description` can override or fill in missing metadata
+- `move-source` defaults to `false`
+
+Behavior:
+
+- reuses a root source `SKILL.md` when present and normalizes its frontmatter
+- otherwise generates a short wrapper `SKILL.md`
+- classifies remaining source files into `scripts/`, `references/`, and
+  `assets/` deterministically
+- stops on missing description, target collisions, or destination conflicts
+  instead of guessing
+
+Use this when you have a loose file or directory that should become a proper
+SkillBag skill without manually reorganizing it first.
+
 ### [skillbag-create-skill](./.skills/skillbag-create-skill/SKILL.md)
 
 Creates a new local skill directory, writes a conforming `SKILL.md`, and keeps
@@ -29,6 +53,32 @@ Key parameters:
 
 Use this when a workspace needs a new skill scaffold with the correct name
 format, frontmatter, and catalog update in one step.
+
+### [skillbag-find-skills-sh](./.skills/skillbag-find-skills-sh/SKILL.md)
+
+Searches [skills.sh](https://skills.sh/) first when a user is looking for an
+installable skill, then adapts selected results into conforming SkillBag
+skills instead of installing them into agent-specific directories.
+
+Key parameters:
+
+- `query` can override the search terms
+- `selections` can identify which found skills to adapt
+- `target-root` defaults to `.`
+
+Behavior:
+
+- uses `npx skills find` as the first external skill-discovery step for
+  "find me a skill" requests
+- presents a candidate list and asks the user whether to install any of them
+  or continue searching
+- resolves selected results through the `skills.sh` detail page's published
+  installation command
+- downloads the selected source and adapts the chosen skill with
+  `skillbag-adapt-skill`
+
+Use this when users want to discover reusable skills from the public
+`skills.sh` ecosystem but the destination needs to stay in SkillBag format.
 
 ### [skillbag-log-skills](./.skills/skillbag-log-skills/SKILL.md)
 

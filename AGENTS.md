@@ -1,4 +1,4 @@
-SKILLBAG UTILS v0.1.1
+SKILLBAG UTILS v0.2.0
 
 This repository is a `SKILLBAG` source.
 Distributed skills live under `.skills/`.
