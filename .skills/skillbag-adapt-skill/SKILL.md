@@ -39,6 +39,10 @@ optional:
   `description` from a root source `SKILL.md`. If neither yields a non-empty
   description, stop and ask the user for one instead of inventing it.
 - Ensure `target-root/.skills/` and `target-root/.skills/SKILLS.md` exist.
+- Before creating the target, read `target-root/.skills/SKILLS.md` and check
+  names/descriptions for a likely duplicate. If found, ask whether to modify
+  the existing skill, adapt as a dependent/wrapper skill, or continue with a
+  new standalone skill.
 - Create the target at `target-root/.skills/<name>/`. If that path already
   exists, stop and report before changing files.
 - A root source `SKILL.md` is authoritative for body content. Normalize its
@@ -48,6 +52,8 @@ optional:
 - If no root source `SKILL.md` exists, generate a short conforming `SKILL.md`
   that points to preserved material in `scripts/`, `references/`, and
   `assets/` instead of copying long source text into the body.
+- Preserve source behavior by default; ask before redesigning imported material
+  into a more generic or dependency-based skill.
 - Preserve source material under the optional SkillBag subdirectories:
   - keep existing `scripts/`, `references/`, and `assets/` directory contents
     in the same bucket while preserving paths relative to that bucket root
