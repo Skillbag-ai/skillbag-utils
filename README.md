@@ -180,6 +180,8 @@ it follows the same repository structure expected by the SkillBag standard.
 - [AGENTS.md](./AGENTS.md): repository-level installation metadata
 - [README.md](./README.md): project overview
 - [CONTRIBUTING.md](./CONTRIBUTING.md): contribution guidance
+- [GOVERNANCE.md](./GOVERNANCE.md): utility-repository governance
+- [SUSTAINABILITY.md](./SUSTAINABILITY.md): funding and maintenance model
 - [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md): collaboration standards
 - [SECURITY.md](./SECURITY.md): security reporting guidance
 - [CHANGELOG.md](./CHANGELOG.md): notable repository changes
