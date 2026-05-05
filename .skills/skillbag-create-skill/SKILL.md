@@ -3,7 +3,7 @@ name: skillbag-create-skill
 description: Create a new skill in a SkillBag repo and keep SKILLS.md synchronized.
 metadata:
   author: backupdev
-  version: 1.0.1
+  version: 1.1.0
 ---
 
 ## Parameters

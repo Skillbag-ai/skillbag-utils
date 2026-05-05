@@ -3,7 +3,7 @@ name: skillbag-adapt-skill
 description: Adapt a file or directory into a conforming SkillBag skill and keep SKILLS.md synchronized.
 metadata:
   author: backupdev
-  version: 1.0.1
+  version: 1.1.0
 ---
 
 ## Parameters

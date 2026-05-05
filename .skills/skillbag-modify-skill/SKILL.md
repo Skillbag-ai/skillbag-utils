@@ -3,7 +3,7 @@ name: skillbag-modify-skill
 description: Modify an existing skill in a SkillBag repo while preserving compliance and catalog sync.
 metadata:
   author: backupdev
-  version: 1.0.1
+  version: 1.1.0
 ---
 
 ## Parameters
