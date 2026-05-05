@@ -3,7 +3,7 @@ name: skillbag-modify-skill
 description: Modify an existing skill in a SkillBag repo while preserving compliance and catalog sync.
 metadata:
   author: backupdev
-  version: 1.0.0
+  version: 1.0.1
 ---
 
 ## Parameters
@@ -39,6 +39,14 @@ optional:
 - Keep the body short; move secondary detail into `references/`, `scripts/`, or `assets/` when needed.
 - Prefer parameters, references, scripts, assets, and dependency declarations
   over duplicated shared instructions.
+- If the modification adds or preserves Python scripts, Python commands, or a
+  deterministic helper script that is best implemented in Python, ensure the
+  skill description and `SKILLS.md` catalog entry include
+  `#use/skillbag-python-ensure` unless already present.
+- Treat `#use/skillbag-python-ensure` as an implied dependency when Python use
+  is clear. Ask before adding it only when Python is optional or ambiguous.
+- If a change appears to remove all Python usage from a skill that already
+  declares `#use/skillbag-python-ensure`, ask before removing that dependency.
 - If a change belongs in a broader existing skill or dependency, ask whether to
   factor it there, depend on it, or keep the edit local.
 - Ask before broadening scope, changing dependencies, renaming, or editing
