@@ -3,7 +3,7 @@ name: skillbag-adapt-skill
 description: Adapt a file or directory into a conforming SkillBag skill and keep SKILLS.md synchronized.
 metadata:
   author: backupdev
-  version: 1.0.0
+  version: 1.1.0
 ---
 
 ## Parameters
@@ -38,6 +38,15 @@ optional:
 - Resolve the target description in this order: explicit `description`;
   `description` from a root source `SKILL.md`. If neither yields a non-empty
   description, stop and ask the user for one instead of inventing it.
+- While inspecting source material, detect Python dependence. Treat any `.py`
+  file, Python shebang, Python launcher command, or root `SKILL.md` instruction
+  that requires Python as a Python-dependent adapted skill.
+- If Python dependence is detected, automatically append
+  `#use/skillbag-python-ensure` to the resolved description unless it is
+  already present. The tagged description becomes both the target `SKILL.md`
+  `description` and the `SKILLS.md` catalog text.
+- If Python appears only as one possible redesign choice rather than preserved
+  source behavior, ask before adding `#use/skillbag-python-ensure`.
 - Ensure `target-root/.skills/` and `target-root/.skills/SKILLS.md` exist.
 - Before creating the target, read `target-root/.skills/SKILLS.md` and check
   names/descriptions for a likely duplicate. If found, ask whether to modify

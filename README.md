@@ -33,6 +33,8 @@ Behavior:
 - otherwise generates a short wrapper `SKILL.md`
 - classifies remaining source files into `scripts/`, `references/`, and
   `assets/` deterministically
+- adds `#use/skillbag-python-ensure` when preserved source material depends on
+  Python
 - stops on missing description, target collisions, or destination conflicts
   instead of guessing
 
@@ -52,7 +54,9 @@ Key parameters:
 - `instructions` lets you seed the skill body
 
 Use this when a workspace needs a new skill scaffold with the correct name
-format, frontmatter, and catalog update in one step.
+format, frontmatter, and catalog update in one step. It automatically adds
+`#use/skillbag-python-ensure` when the new skill clearly needs Python scripts
+or Python commands.
 
 ### [skillbag-find-skills-sh](./.skills/skillbag-find-skills-sh/SKILL.md)
 
@@ -126,7 +130,33 @@ Key parameters:
 - `instructions` updates the skill body
 
 Use this when a skill already exists and you want controlled changes without
-manually reconciling `SKILL.md` and `SKILLS.md`.
+manually reconciling `SKILL.md` and `SKILLS.md`. It keeps
+`#use/skillbag-python-ensure` synchronized when a change clearly introduces,
+preserves, or removes Python-dependent behavior.
+
+### [skillbag-python-ensure](./.skills/skillbag-python-ensure/SKILL.md)
+
+Ensures Python 3 is available before Python-dependent SkillBag workflows run,
+and asks before attempting installation or system changes.
+
+Key parameters:
+
+- `minimum-version` defaults to `3.0`
+- `install-policy` defaults to `ask` and can be set to `guide-only`
+- `target-root` defaults to `.`
+
+Behavior:
+
+- checks common Python launchers across Windows, macOS, and Linux
+- accepts only Python 3 interpreters that satisfy the requested minimum version
+- asks for permission before using installers, package managers, or privileged
+  commands
+- provides platform-specific install guidance when automatic setup is not
+  appropriate
+
+Use this as a dependency for skills that need to run bundled Python scripts.
+Those skills can advertise the relationship with a
+`#use/skillbag-python-ensure` tag.
 
 ### [skillbag-refresh-skill-context](./.skills/skillbag-refresh-skill-context/SKILL.md)
 
