@@ -41,6 +41,32 @@ Behavior:
 Use this when you have a loose file or directory that should become a proper
 SkillBag skill without manually reorganizing it first.
 
+### [skillbag-chrono-log](./.skills/skillbag-chrono-log/SKILL.md)
+
+Creates or updates a folder-local chronological Markdown log while keeping the
+newest dated section first.
+
+Key parameters:
+
+- `target-folder` and `text` are required
+- `filename` defaults to `log.md`
+- `date` defaults to today
+- `mode` supports `append` and `replace`
+- `weekday-locale` supports English by default, several common weekday-label
+  languages, or `none`
+
+Behavior:
+
+- writes only `<target-folder>/<filename>` and creates the target folder when
+  needed
+- adds new dated sections in reverse chronological order
+- inserts same-day entries at the top of the existing day section
+- can replace a single date section for consolidated daily summaries
+- uses `skillbag-python-ensure` before running the bundled Python helper
+
+Use this for project journals, incident histories, progress logs, dated folder
+records, or other local notes where the newest entry should stay easy to find.
+
 ### [skillbag-create-skill](./.skills/skillbag-create-skill/SKILL.md)
 
 Creates a new local skill directory, writes a conforming `SKILL.md`, and keeps

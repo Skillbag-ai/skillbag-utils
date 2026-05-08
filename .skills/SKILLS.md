@@ -1,4 +1,5 @@
 skillbag-adapt-skill: Adapt a file or directory into a conforming SkillBag skill and keep SKILLS.md synchronized.
+skillbag-chrono-log: Create or update a folder-local chronological Markdown log with the newest dated section first. #use/skillbag-python-ensure
 skillbag-create-skill: Create a new skill in a SkillBag repo and keep SKILLS.md synchronized.
 skillbag-find-skills-sh: Search skills.sh first when users need a skill, present matches, and adapt selected results into SkillBag skills. #use/skillbag-adapt-skill #use/skillbag-refresh-skill-context
 skillbag-log-skills: Make the agent always output the list of skill names used to generate the response. #run/always

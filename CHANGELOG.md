@@ -4,6 +4,12 @@ All notable changes to this repository should be documented in this file.
 
 The format is intentionally simple while the project remains a draft.
 
+## Unreleased
+
+- Added `skillbag-chrono-log` for maintaining folder-local chronological
+  Markdown logs with configurable weekday labels and a
+  `skillbag-python-ensure` dependency.
+
 ## v0.2.0
 
 - Added `skillbag-adapt-skill` for adapting a file or directory into a
