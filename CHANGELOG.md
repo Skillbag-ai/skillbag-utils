@@ -4,6 +4,17 @@ All notable changes to this repository should be documented in this file.
 
 The format is intentionally simple while the project remains a draft.
 
+## v0.2.1
+
+- Updated `skillbag-create-skill` and `skillbag-modify-skill` to prefer
+  script-backed skills for deterministic context-heavy workflows, while asking
+  the user when Python is optional, ambiguous, or not clearly the more
+  context-efficient implementation.
+- Bumped `skillbag-create-skill` and `skillbag-modify-skill` to version
+  `1.1.1`.
+- Updated the repository version marker to `SKILLBAG UTILS v0.2.1` in
+  `AGENTS.md`.
+
 ## v0.2.0
 
 - Added `skillbag-adapt-skill` for adapting a file or directory into a
