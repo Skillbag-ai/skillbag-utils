@@ -3,7 +3,7 @@ name: skillbag-create-skill
 description: Create a new skill in a SkillBag repo and keep SKILLS.md synchronized.
 metadata:
   author: backupdev
-  version: 1.1.0
+  version: 1.1.1
 ---
 
 ## Parameters
@@ -43,13 +43,26 @@ optional:
   instead of hard-coding it into the core workflow.
 - Declare dependencies when reusing existing skills; use `#use/<skill-name>` in
   the description when companion execution should be considered.
+- When the requested skill is context-heavy but can be described as
+  deterministic steps, prefer a script-backed skill over prose-only
+  instructions. Good candidates include repeated parsing, validation, file
+  generation, catalog synchronization, batch transforms, and other mechanical
+  work where code can reduce future agent context and token use.
+- For script-backed skills, keep `SKILL.md` focused on when to run the helper,
+  required inputs, expected outputs, and failure behavior. Put implementation
+  detail in `scripts/`, with supporting notes in `references/` only when
+  needed.
+- Do not create scripts for ambiguous judgment work, open-ended writing,
+  one-off narrow tasks, or workflows where the agent must inspect and decide
+  case by case.
 - If the new skill includes Python scripts, Python commands, or a deterministic
   helper script that is best implemented in Python, automatically add
   `#use/skillbag-python-ensure` to the description unless it is already
   present. The tagged description becomes both the `description` field and the
   `SKILLS.md` catalog text.
-- If Python is only one of several reasonable implementation choices, ask the
-  user before adding `#use/skillbag-python-ensure`.
+- If Python is only one of several reasonable implementation choices, or it is
+  not clear whether a Python-backed skill would be more context-efficient, ask
+  the user before adding `#use/skillbag-python-ensure`.
 - Keep the body short; move secondary detail into `references/`, `scripts/`, or `assets/` when needed.
 - Create optional subdirectories only when they are needed.
 - Update `target-root/.skills/SKILLS.md` so it contains exactly one sorted line `<name>: <description>` for the new skill.

@@ -54,9 +54,11 @@ Key parameters:
 - `instructions` lets you seed the skill body
 
 Use this when a workspace needs a new skill scaffold with the correct name
-format, frontmatter, and catalog update in one step. It automatically adds
+format, frontmatter, and catalog update in one step. It prefers script-backed
+skills for deterministic context-heavy workflows, and automatically adds
 `#use/skillbag-python-ensure` when the new skill clearly needs Python scripts
-or Python commands.
+or Python commands. When Python is only one reasonable implementation path, the
+skill asks the user before adding that dependency.
 
 ### [skillbag-find-skills-sh](./.skills/skillbag-find-skills-sh/SKILL.md)
 
@@ -132,7 +134,8 @@ Key parameters:
 Use this when a skill already exists and you want controlled changes without
 manually reconciling `SKILL.md` and `SKILLS.md`. It keeps
 `#use/skillbag-python-ensure` synchronized when a change clearly introduces,
-preserves, or removes Python-dependent behavior.
+preserves, or removes Python-dependent behavior, and encourages script-backed
+helpers for deterministic context-heavy behavior.
 
 ### [skillbag-python-ensure](./.skills/skillbag-python-ensure/SKILL.md)
 
